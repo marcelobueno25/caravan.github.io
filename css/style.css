@@ -9,5 +9,18 @@ body {
     height: 100px;
 }
 #home-quoto {
-    
+    background: url('../img/bg-quote.jpg') center center;
+    background-size: cover;
+}
+
+@media (max-width: 767px) {
+    #home-quoto .display-4 {
+        font-size:  2.5em;
+    }
+    body {
+        padding-top: 0px;
+    }
+    .fixed-top {
+        position: relative;
+    }
 }
