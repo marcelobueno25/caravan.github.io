@@ -1,26 +1,195 @@
-body {
-    padding-top: 60px;
-}
-.box-shadow {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05),
-                0 4px 8px 0 rgba(0,0,0,.05);
-}
-.icone {
-    height: 100px;
-}
-#home-quoto {
-    background: url('../img/bg-quote.jpg') center center;
-    background-size: cover;
+/* ---------- Variáveis ---------- */
+:root {
+  --clr-primary: #0d6efd;
+  --clr-primary-gradient: linear-gradient(135deg, #0d6efd 0%, #6c63ff 100%);
+  --clr-dark: #0a0f1a;
+  --clr-light: #f8f9fa;
+  --hero-h: 60vh; /* altura do carrossel em um só lugar */
 }
 
-@media (max-width: 767px) {
-    #home-quoto .display-4 {
-        font-size:  2.5em;
-    }
-    body {
-        padding-top: 0px;
-    }
-    .fixed-top {
-        position: relative;
-    }
+/* ---------- Reset / base ---------- */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--clr-dark);
+  background: var(--clr-light);
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ---------- Utilidades ---------- */
+
+.btn {
+  color: #fff;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  color: #fff;
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.btn-gradient {
+  background: var(--clr-primary-gradient);
+  border: 0;
+}
+.btn-gradient:hover {
+  filter: brightness(1);
+}
+
+.section-title {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+}
+.navbar-brand img {
+  height: 36px;
+}
+
+/* ---------- Hero / Carrossel ---------- */
+#hero {
+  min-height: var(--hero-h);
+  position: relative;
+  overflow: hidden;
+}
+#hero .carousel-item {
+  height: var(--hero-h);
+}
+#hero .carousel-item img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#hero .carousel-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+#hero .carousel-caption {
+  bottom: 45%;
+  transform: translateY(50%);
+}
+
+/* ---------- Cartões de Vantagens ---------- */
+.advantage-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.advantage-card img {
+  width: 72px;
+  height: 72px;
+}
+
+/* ---------- Citação ---------- */
+#quote {
+  background: url("../img/bg-quote.jpg") center / cover fixed;
+  color: #fff;
+  position: relative;
+}
+#quote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#quote .content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- FAQ ---------- */
+.accordion-button:not(.collapsed) {
+  background: var(--clr-primary-gradient);
+  color: #fff;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: linear-gradient(180deg, #0a0f1a 0%, #030508 100%);
+  color: #adb5bd;
+}
+.footer a {
+  color: #adb5bd;
+}
+.footer a:hover {
+  color: #fff;
+}
+.footer .btn-outline-light {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-color: #0a0f1a;
+  --bs-btn-hover-border-color: #fff;
+}
+.footer .social-btn {
+  width: 40px; /* mesmo valor = círculo perfeito        */
+  height: 40px;
+  padding: 0; /* remove espaçamento extra do Bootstrap */
+  display: flex; /* centraliza o ícone                    */
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* garante a forma redonda               */
+  font-size: 1rem; /* tamanho do ícone                      */
+}
+
+/* ==== Modal de Login ==== */
+#modalLogin .modal-dialog {
+  max-width: 420px; /* largura agradável */
+}
+#modalLogin .modal-content {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+  overflow: hidden; /* esconde cantos arredondados */
+}
+
+#modalLogin .modal-header {
+  background: var(--clr-primary-gradient); /* gradiente já definido */
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+}
+
+#modalLogin .modal-header .modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+#modalLogin .modal-header .modal-title i {
+  font-size: 1.25rem;
+}
+
+#modalLogin .modal-header .btn-close {
+  filter: invert(1); /* ícone branco */
+  opacity: 0.8;
+}
+#modalLogin .modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+#modalLogin .form-control {
+  border-radius: 0.5rem;
+  border-color: #e0e0e0;
+}
+#modalLogin .form-control:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+#modalLogin .btn-login {
+  border-radius: 0.5rem;
 }
